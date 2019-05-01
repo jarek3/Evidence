@@ -1,0 +1,19 @@
+<h1>Evidence kosmonautů</h1> 
+<table>
+ <thead>    
+    <tr><th>Jméno</th><th>Příjmení</th><th>Datum narození</th><th>Superschopnost</th><?php if ($admin) : ?><th colspan="2">Administrace</th><?php endif ?>
+    </tr>   
+ </thead>
+ <tbody>
+   <?php foreach ($kosmonauti as $kosmonaut) : ?>                                                                  
+    <tr><td><?=$kosmonaut['jmeno']?></td><td><?=$kosmonaut['prijmeni']?></td><td><?=DatumHelper::datumCesky($kosmonaut['datum_narozeni'])?></td>
+        <td><?=$kosmonaut['superschopnost']?></td>
+        
+      <?php if ($admin) : ?><td><a href="editace/<?= $kosmonaut['kosmonaut_id'] ?>">Editovat</a></td>
+                        <td><a href="kosmonaut/<?= $kosmonaut['kosmonaut_id'] ?>/odstranit">Odstranit</a></td>
+      <?php endif ?>
+      
+    </tr>
+   <?php endforeach ?>                    
+ </tbody>   
+</table>
